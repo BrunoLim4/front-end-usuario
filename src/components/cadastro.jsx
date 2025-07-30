@@ -1,4 +1,4 @@
-// frontend-pais/src/components/cadastro.jsx (AJUSTADO)
+// frontend-pais/src/components/cadastro.jsx
 
 import React, { useState, useEffect } from 'react';
 import { FaUpload } from 'react-icons/fa';
@@ -6,10 +6,10 @@ import './cadastro.css';
 // Caminho ajustado para a imagem, supondo que está em /public/img
 import racingLogo from '/img/racing_rodape.png'; // Recomendo usar o logo principal aqui, 'racing_rodape.png' parece ser para o rodapé.
 
-// Define a URL base da API usando variáveis de ambiente do Vite
-// O valor padrão 'http://localhost:3000' foi corrigido com base na sua última saída do backend.
-// Note que para pais, a rota base é '/api/pais'
-const API_BASE_URL_PAIS = import.meta.env.VITE_API_BASE_URL_PAIS || 'https://cadastroracing.vercel.app/api/pais';
+// CORREÇÃO: Define a URL base da API usando a mesma variável de ambiente do backend
+// que já está configurada na Vercel (VITE_BACKEND_URL).
+// O valor padrão 'http://localhost:3001' é para o seu ambiente de desenvolvimento local do backend.
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
 
 
 export default function Cadastro() {
@@ -17,8 +17,6 @@ export default function Cadastro() {
     nomeCompleto: '',
     dataNascimento: '',
     genero: '',
-    // foto não deve ser inicializada aqui, pois será um File object, não string/null diretamente no formData.
-    // Ela será tratada separadamente no handleFileChange.
     nomeResponsavel: '',
     cpfResponsavel: '',
     nomeMae: '',
@@ -126,11 +124,13 @@ export default function Cadastro() {
         dataToSend.append('foto', fotoFile);
     }
     // Adicione statusPagamento que não está no formulário
+    // Já está no formData, então não precisa adicionar separadamente aqui se já estiver lá.
+    // dataToSend.append('statusPagamento', formData.statusPagamento); // Se precisar garantir que vai sempre, mesmo que o campo não esteja no form.
 
 
     try {
-      // AJUSTADA A URL para a rota dos pais
-      const response = await fetch(`${API_BASE_URL_PAIS}/alunos/cadastro`, {
+      // CORREÇÃO: A URL completa agora usa API_BASE_URL e o prefixo correto para rotas de pais
+      const response = await fetch(`${API_BASE_URL}/api/pais/alunos/cadastro`, {
         method: 'POST',
         // Não defina Content-Type para FormData. O navegador fará isso automaticamente.
         body: dataToSend,
