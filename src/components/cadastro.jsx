@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaUpload } from 'react-icons/fa';
 import './cadastro.css';
-// Caminho ajustado para a imagem, supondo que está em /public/img
-import racingLogo from '/img/racing_rodape.png'; // Recomendo usar o logo principal aqui, 'racing_rodape.png' parece ser para o rodapé.
+import racingLogo from '/img/racing_rodape.png';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redirecionamento
 
-// CORREÇÃO: Define a URL base da API usando a mesma variável de ambiente do backend
+// Define a URL base da API usando a mesma variável de ambiente do backend
 // que já está configurada na Vercel (VITE_BACKEND_URL).
 // O valor padrão 'http://localhost:3001' é para o seu ambiente de desenvolvimento local do backend.
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
@@ -32,6 +32,7 @@ export default function Cadastro() {
   const [loading, setLoading] = useState(false); // Adicionado estado de loading
   const [calculatedCategory, setCalculatedCategory] = useState(''); // Estado para exibir a categoria calculada
 
+  const navigate = useNavigate(); // Inicializa o hook de navegação
 
   // Função para calcular a categoria com base no ano de nascimento
   const calculateCategory = (birthDateString, genero) => {
@@ -123,16 +124,11 @@ export default function Cadastro() {
     if (fotoFile) { // Adicione o arquivo de foto do estado 'fotoFile'
         dataToSend.append('foto', fotoFile);
     }
-    // Adicione statusPagamento que não está no formulário
-    // Já está no formData, então não precisa adicionar separadamente aqui se já estiver lá.
-    // dataToSend.append('statusPagamento', formData.statusPagamento); // Se precisar garantir que vai sempre, mesmo que o campo não esteja no form.
 
 
     try {
-      // CORREÇÃO: A URL completa agora usa API_BASE_URL e o prefixo correto para rotas de pais
       const response = await fetch(`${API_BASE_URL}/api/pais/alunos/cadastro`, {
         method: 'POST',
-        // Não defina Content-Type para FormData. O navegador fará isso automaticamente.
         body: dataToSend,
       });
 
@@ -146,7 +142,12 @@ export default function Cadastro() {
       setMessage(result.message || 'Aluno cadastrado com sucesso!');
       setIsError(false);
 
-      // Limpar formulário após o envio
+      // Redireciona para a tela de boas-vindas após o sucesso do cadastro
+      navigate('/welcome');
+
+      // Não limpa o formulário aqui, pois o usuário será redirecionado
+      // Se você quiser limpar o formulário ANTES de redirecionar, pode manter o código abaixo
+      /*
       setFormData({
         nomeCompleto: '',
         dataNascimento: '',
@@ -156,12 +157,13 @@ export default function Cadastro() {
         nomeMae: '',
         contato1: '',
         contato2: '',
-        categoria: '', // Resetar categoria também
+        categoria: '',
         statusPagamento: 'Pendente',
       });
-      setFotoFile(null); // Limpar o estado do arquivo da foto
+      setFotoFile(null);
       setFotoPreview(null);
-      setCalculatedCategory(''); // Resetar categoria exibida
+      setCalculatedCategory('');
+      */
 
     } catch (err) {
       console.error('Erro ao cadastrar aluno:', err);
@@ -175,7 +177,6 @@ export default function Cadastro() {
   return (
     <div className="registration-container">
       <header className="main-header">
-        {/* Caminho ajustado para a imagem */}
         <img src={racingLogo} alt="Racing Logo" className="header-image" />
       </header>
 
@@ -336,7 +337,6 @@ export default function Cadastro() {
       </form>
 
       <footer className="footer">
-        {/* Caminho ajustado para a imagem */}
         <img src="/img/racing_rodape.png" alt="foto-rodape" className='foto-Rodape' />
       </footer>
     </div>
