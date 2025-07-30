@@ -9,7 +9,7 @@ import racingLogo from '/img/racing_rodape.png'; // Recomendo usar o logo princi
 // Define a URL base da API usando variáveis de ambiente do Vite
 // O valor padrão 'http://localhost:3000' foi corrigido com base na sua última saída do backend.
 // Note que para pais, a rota base é '/api/pais'
-const API_BASE_URL_PAIS = import.meta.env.VITE_API_BASE_URL_PAIS || 'http://localhost:3000/api/pais';
+const API_BASE_URL_PAIS = import.meta.env.VITE_API_BASE_URL_PAIS || 'https://cadastroracing.vercel.app/api/pais';
 
 
 export default function Cadastro() {
