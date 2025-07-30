@@ -1,21 +1,16 @@
 /* Container principal com fundo animado */
 .football-container {
   height: 100vh;
-background: linear-gradient(
-  -45deg,
-  #07035a,      /* azul royal */
-  #110e7a,      /* azul escuro */
-  #242aa2,      /* azul clarinho */
-  #3c4ebf,      /* branco azulado suave */
-  #78a2f6       /* branco bem clarinho quase imperceptível */
-);
-background-size: 400% 400%;
-animation: bgMove 12s ease infinite;
-
-background-size: 400% 400%;
-animation: bgMove 12s ease infinite;
-  background-size: 400% 400%;
-  animation: bgMove 12s ease infinite;
+  background: linear-gradient(
+    -45deg,
+    #07035a,       /* azul royal */
+    #110e7a,       /* azul escuro */
+    #242aa2,       /* azul clarinho */
+    #3c4ebf,       /* branco azulado suave */
+    #78a2f6        /* branco bem clarinho quase imperceptível */
+  );
+  background-size: 400% 400%; /* Definido apenas uma vez */
+  animation: bgMove 12s ease infinite; /* Definido apenas uma vez */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +29,7 @@ animation: bgMove 12s ease infinite;
 .escudo {
   width: 220px; /* antes era 150px */
   height: auto;
-  transform: scale(0.8);
+  transform: scale(0.8); /* Mantido para a animação */
 }
 
 /* Título animado */
@@ -96,3 +91,17 @@ animation: bgMove 12s ease infinite;
   100% { background-position: 0% 50%; }
 }
 
+/* Estilos para o rodapé (mantidos do componente anterior) */
+.welcome-footer {
+  margin-top: 30px; /* Ajuste conforme necessário para o espaçamento */
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-image {
+  max-width: 100px; /* Ajuste o tamanho da imagem do rodapé */
+  opacity: 0.7; /* Suaviza a imagem */
+}

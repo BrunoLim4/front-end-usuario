@@ -1,21 +1,28 @@
+// frontend-pais/src/components/welcome.js
 import React from 'react';
-import './welcome.css';
+import './welcome.css'; // Importa o CSS para o componente Welcome
 
-const WelcomeFootball = () => {
+// Definição do componente funcional Welcome para consistência com App.jsx
+const Welcome = () => {
   return (
-    <div className="football-container">
-      <div className="escudo-wrapper">
+    <div className="welcome-container"> {/* Container principal do componente */}
+      <div className="content-wrapper">
         <img
-          src="/logo-racing.png" // coloque sua imagem aqui
-          alt="Escudo do time"
-          className="escudo"
+          src="/logo-racing.png" // Caminho da imagem que você especificou
+          alt="Escudo do time Racing Academy"
+          className="welcome-logo" // Classe para o logo
         />
+        <h1 className="welcome-title">Bem-vindo ao Racing Academy!</h1> {/* Título principal */}
+        <p className="welcome-message">
+          Aqui formamos atletas com disciplina, paixão e trabalho em equipe. ⚽
+        </p> {/* Mensagem de boas-vindas */}
       </div>
-      <h1 className="titulo">Bem-vindo ao Racing Academy!</h1>
-      <p className="subtitulo">Aqui formamos atletas com disciplina, paixão e trabalho em equipe. ⚽</p>
+      {/* Rodapé, mantido para consistência visual */}
+      <footer className="welcome-footer">
+        <img src="/img/racing_rodape.png" alt="Rodapé Racing" className="footer-image" />
+      </footer>
     </div>
   );
 };
 
-export default WelcomeFootball;
-
+export default Welcome; // Exportação padrão do componente
