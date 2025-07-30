@@ -2,7 +2,7 @@
 import React from 'react';
 import './welcome.css'; // Importa o CSS para o componente Welcome
 
-// Definição do componente funcional Welcome para consistência com App.jsx
+// Definição do componente funcional Welcome
 const Welcome = () => {
   return (
     <div className="welcome-container"> {/* Container principal do componente */}
@@ -14,7 +14,7 @@ const Welcome = () => {
         />
         <h1 className="welcome-title">Bem-vindo ao Racing Academy!</h1> {/* Título principal */}
         <p className="welcome-message">
-          Aqui formamos atletas com disciplina, paixão e trabalho em equipe. ⚽
+          Aqui formamos atletas com disciplina, paixão e trabalho em equipe.
         </p> {/* Mensagem de boas-vindas */}
       </div>
       {/* Rodapé, mantido para consistência visual */}
