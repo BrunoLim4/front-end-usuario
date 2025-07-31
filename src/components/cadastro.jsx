@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redi
 // Define a URL base da API usando a mesma variável de ambiente do backend
 // que já está configurada na Vercel (VITE_BACKEND_URL).
 // O valor padrão 'http://localhost:3001' é para o seu ambiente de desenvolvimento local do backend.
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 
 export default function Cadastro() {

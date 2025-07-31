@@ -8,7 +8,7 @@ const Welcome = () => {
     <div className="welcome-container"> {/* Container principal do componente */}
       <div className="content-wrapper">
         <img
-          src="/logo-racing.png" // Caminho da imagem que você especificou
+          src="/img/racing_rodape.png" // Caminho da imagem que você especificou
           alt="Escudo do time Racing Academy"
           className="welcome-logo" // Classe para o logo
         />
@@ -17,10 +17,6 @@ const Welcome = () => {
           Aqui formamos atletas com disciplina, paixão e trabalho em equipe. ⚽
         </p> {/* Mensagem de boas-vindas */}
       </div>
-      {/* Rodapé, mantido para consistência visual */}
-      <footer className="welcome-footer">
-        <img src="/img/racing_rodape.png" alt="Rodapé Racing" className="footer-image" />
-      </footer>
     </div>
   );
 };
