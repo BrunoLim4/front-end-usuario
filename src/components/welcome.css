@@ -45,7 +45,7 @@
 
 /* Subtítulo com menos espaçamento */
 .welcome-message {
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: #e0ffe0;
   margin-top: 5px; /* diminui a distância */
   animation: fadeInUp 2s ease 1.8s forwards;
